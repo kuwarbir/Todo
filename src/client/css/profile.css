@@ -1,0 +1,45 @@
+.container
+{
+    display: grid;
+    width: 50%;
+    margin: 2rem auto;
+    grid-template-rows: auto auto auto;
+}
+.inputs
+{
+    display: grid;
+}
+.input-todo >button
+{
+    border: none;
+ background-color: #eee;
+ border-radius: 3px;
+ padding: 0.7rem;
+ color: #3e81c7;
+}
+.addtodo
+{
+    width: 20rem;
+    height: 2rem;
+}
+
+.todolist
+{
+
+}
+.list-item{
+    display: grid;
+    border: 1px  solid #eee;
+    border-radius: 3px;
+    padding: 1rem;
+    width: 30rem;
+    grid-template-columns: auto 20% 20% 20%  20%;
+}
+.sign-out > button
+{
+ border: none;
+ background-color: #eee;
+ border-radius: 3px;
+ padding: 1rem;
+ color: red;
+}

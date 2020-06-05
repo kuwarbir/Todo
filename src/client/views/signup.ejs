@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/signup.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+		<nav>
+			<h1>
+				TODO APP
+			</h1>
+		</nav>
+    <div class="container">
+        <% if(msg){ %>
+            <p> <%= msg %></p>
+            <% }%>
+        <div class="heading"> Sign Up:</div>
+    <div class="signup-form">
+    <form  class="form" action="/signup" method="post" required>
+        <div class="name">
+            <input type="text" name="name" placeholder="name" id="name" required>
+
+        </div>
+        <div class="email">
+            <input type="email" name="email" placeholder="email" id="email" required>
+
+        </div>
+        <div class="pass">
+            <input type="password" name="password" placeholder="password" id="password">
+
+        </div>
+        <div class="submit">
+            <button type="submit">Sign Up</button>
+
+        </div>
+       
+    </form>
+</div>
+    <div class="signin">
+        <div>Aleady have an account ?</div>  
+         <div>
+          <a href="/signin">   <button class=" signin-button "type="submit">Sign In</button></a>
+         </div>
+    
+    </div>
+    </div>
+</body>
+</html>

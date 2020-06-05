@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8"></meta>
+	<title>Home Page</title>
+	<link rel="stylesheet" href="../css/profile.css">
+</head>
+<script>
+	function checkDate() {
+   var selectedText = document.getElementById('datepicker').value;
+   var selectedDate = new Date(selectedText);
+   var now = new Date();
+   if (selectedDate < now) {
+    alert("Date must be in the future");
+   }
+ }
+</script>
+<body>	
+	<header>
+		<nav>
+			<h1>
+				TODO APP
+			</h1>
+		</nav>
+		
+	</header>
+	<div class="container">
+		<div class="name">
+			<% if(name){ %>
+				<h1>Welcome <%= name %></h1>
+				<% }%>
+		</div>
+	
+	
+	<div class="inputs">
+		<form class=input-todo action="/" method="POST">
+			<input class="addtodo" type="text" name="todo" placeholder="add a task" id="">
+			<input id="datepicker" name=date onchange="checkDate()" required class="datepicker-input" type="date" data-date-format="yyyy-mm-dd" >
+			<button type="submit" >
+				Add
+			</button>
+			</form>
+		<form action="/signout" method="GET">
+			<button type="submit" >
+				Sign Out
+			</button>
+		</form>
+	</div>
+
+	<div class="todoList">
+		<ul>
+	<%	for(let i=0;i<todolist.length;i++) { %>
+		<% let id=todolist[i].dataValues.id %>
+		<!-- <% console.log(id)%> -->
+
+		
+
+		<% if(todolist[i].dataValues.done=="not done") { %>
+			<li class="list-item"> <%= todolist[i].dataValues.item  %>    <a href="/delete/<%= id %>" > <button>delete</button> </a>  <a href="/edit/<%= id %>" ><button>edit</button></a>   <a href="/done/<%= id %>"><button>done</button></a> <span>  Due Date: <%= todolist[i].dataValues.date  %></span>
+			</li>
+		
+
+		<% } %>
+		<% if(todolist[i].dataValues.done==id) { %>
+			<li class="list-item"> <strike><%= todolist[i].dataValues.item  %> </strike>    <a href="/delete/<%= id %>" > <button>delete</button> </a>   <a href="/notdone/<%= id %>"><button>not done</button></a> <span>  Due Date: <%= todolist[i].dataValues.date  %></span>
+			</li>
+		
+
+		<% } %>
+		<% if(todolist[i].dataValues.done==undefined) { %>
+			<li class="list-item"> <%= todolist[i].dataValues.item  %>    <a href="/delete/<%= id %>" > <button>delete</button> </a>  <a href="/edit/<%= id %>" ><button>edit</button></a>   <a href="/done/<%= id %>"><button>done</button></a> <span>  Due Date: <%= todolist[i].dataValues.date   %></span>
+			</li>
+		
+
+		<% } %>
+			
+		<% if(todolist[i].dataValues.edit==id) {%>
+			<form action="/update/<%= id %>" method="POST">
+				<input type="text" name="todo" id="">
+			
+				<button type="submit">
+					Add
+				</button>
+				</form>
+ 
+		</li>
+		
+		<% } %>
+	<% } %>
+		
+	</ul>
+	</div>
+</div>
+
+</body>
+</html>
